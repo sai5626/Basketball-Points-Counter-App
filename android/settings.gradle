@@ -1,0 +1,17 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+def flutterSdkPath = System.getenv("FLUTTER_HOME") ?: System.getenv("FLUTTER_SDK")
+
+if (flutterSdkPath == null || flutterSdkPath.trim().isEmpty()) {
+    throw new GradleException("Flutter SDK path not found. Please set the FLUTTER_HOME or FLUTTER_SDK environment variable.")
+}
+
+includeBuild("${flutterSdkPath}/packages/flutter_tools/gradle")
+
+include(":app")
